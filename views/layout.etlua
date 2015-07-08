@@ -1,0 +1,29 @@
+<!-- views/layout.etlua -->
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= page_title %></title>
+  <link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/grid.css">
+  <link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/main.css">
+  <style>
+  
+  </style>
+</head>
+<body>
+	<div class="content grid">
+		<!-- left column -->
+		<div class="col-30 col-m-100 col-s-100 left">
+			<div class="col-100">
+				<h1 class="top-space">Blog</h1>
+			</div>
+		</div>
+
+		<!-- right column -->
+		<div class="col-70 col-m-100 col-s-100 right">
+			<% content_for("inner") %>
+		</div>
+	</div>
+</body>
+</html>

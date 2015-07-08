@@ -1,0 +1,5 @@
+<% for i, thing in pairs(post_list) do %>
+    <article>
+    	<%- thing %>
+    </article>
+ <% end %>
