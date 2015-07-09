@@ -13,6 +13,9 @@ body {
   color: #333;
   font-family: Arial, Helvetica, 'Sans-Serif';
 }
+a {
+  text-decoration: none;
+}
 h1 {
 	margin: 0 auto;
 	width: 600px;
@@ -57,6 +60,11 @@ article .post-date {
 article .read-more {
   color: #6699FF;
   float: right;
-  text-decoration: none;
   font-size: 20px;
+  display: inline-block;
+  padding-top:5px;
+}
+article .social-media-icon {
+  width: 40px;
+  margin-right: 5px;
 }

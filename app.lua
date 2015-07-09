@@ -72,7 +72,8 @@ end)
 
 app:post("form", "/form", capture_errors(function(self)
   csrf.assert_token(self)
-  return "The form is valid!"
+
+  return "<h2>hello</h2>"
 end))
 
 return app

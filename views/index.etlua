@@ -10,9 +10,11 @@
 		</div>
 
     	<h2><%- v['posttitle'] %></h2>    	
-    	<p><%- string.sub(v['postcontent'],1,900) %></p>
+    	<p><%- string.sub(v['postcontent'],1,900) %>...</p>
     	<div class="col-50 top-space">
-    		&nbsp;
+    		<a class="" href="<% build_url() %>/#"><img class="social-media-icon" src="<% build_url() %>/static/img/googleplus.png" alt="googleplus" /></a>
+    		<a class="" href="<% build_url() %>/#"><img class="social-media-icon" src="<% build_url() %>/static/img/facebook.png" alt="facebook" /></a>
+    		<a class="" href="<% build_url() %>/#"><img class="social-media-icon" src="<% build_url() %>/static/img/twitter.png" alt="twitter" /></a>
     	</div>
 
     	<div class="col-50 top-space">

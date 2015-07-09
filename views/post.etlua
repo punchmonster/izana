@@ -11,4 +11,16 @@
 	<h2><%- post_title %></h2>
 	<p><%- post_content %></p>
 
+	<div class="col-50 top-space bottom-space">
+		<a class="" href="<% build_url() %>/#"><img class="social-media-icon" src="<% build_url() %>/static/img/googleplus.png" alt="googleplus" /></a>
+		<a class="" href="<% build_url() %>/#"><img class="social-media-icon" src="<% build_url() %>/static/img/facebook.png" alt="facebook" /></a>
+		<a class="" href="<% build_url() %>/#"><img class="social-media-icon" src="<% build_url() %>/static/img/twitter.png" alt="twitter" /></a>
+	</div>
+
+	<div class="col-50 top-space bottom-space">
+		&nbsp;
+	</div>
+
+	<div style="clear: both;"></div>
+
 </article>
