@@ -28,7 +28,7 @@ config("development", {
 ```
 Also make sure your database has a table named post with these columns:
 
-| postID  | postdate | posttitle | postcontent | postauthor  |
+`| postID  | postdate | posttitle | postcontent | postauthor  |`
 
 
 
