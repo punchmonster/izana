@@ -8,9 +8,13 @@ local app   = lapis.Application()
 app:enable('etlua')
 app.layout = require 'views.layout'
 
+
+-- main inex page
 app:get('/', function(self)
+
 	-- retrieve posts table rowcount
 	local row_count   = db.select("COUNT(*) from posts" )
+
 	-- retrieve post list
 	self.table_content = db.select("* from posts where postID >= 1 and postID <= ? order by postID DESC", row_count[1]['COUNT(*)'] )
 
@@ -20,12 +24,15 @@ app:get('/', function(self)
 	return { render = 'index'}
 end)
 
+-- individual article pages
 app:get('/post/:postID', function(self)
-	-- variable for storing view output
-	local postID = self.params.postID
 
+	-- variable for storing view output
+	local postID      = self.params.postID
+
+	-- retrieve all the post information
 	local row_content = db.select("* from posts where postID = ?", postID)
-	-- call database
+	-- pass post information to the MVC
 	self.post_content = row_content[1]['postcontent']
 	self.post_title   = row_content[1]['posttitle']
 	self.page_title   = 'Izana - ' .. row_content[1]['posttitle']
@@ -33,15 +40,19 @@ app:get('/post/:postID', function(self)
 	return { render = 'post'}
 end)
 
+-- test function for adding test posts to database
 app:get('/dbtest', function(self)
-	local row_count   = db.select("COUNT(*) from posts" )
 
+	-- retrieve total amount of posts
+	local row_count = db.select("COUNT(*) from posts" )
+
+	-- insert the post into the database
 	db.insert('posts', {
-		postID = row_count[1]['COUNT(*)'] + 1,
-		postdate = "2015-07-09",
-		posttitle = "about fat",
+		postID      = row_count[1]['COUNT(*)'] + 1,
+		postdate    = "2015-07-09",
+		posttitle   = "about fat",
 		postcontent = "This is a testpost, if you read this I hope you get cancer",
-		postauthor = "Jamie Roling"
+		postauthor  = "Jamie Roling"
 	})
 	return { render = 'index' }
 end)
