@@ -14,8 +14,6 @@ app:get('/', function(self)
 	-- retrieve post list
 	self.table_content = db.select("* from posts where postID >= 1 and postID <= ? order by postID DESC", row_count[1]['COUNT(*)'] )
 
-	--self.post_content = row_count[1]['COUNT(*)']
-
 	-- set page title
 	self.page_title = 'Izana - home'
 
