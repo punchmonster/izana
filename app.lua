@@ -1,7 +1,8 @@
 local lapis = require('lapis')
-local util = require('lapis.util')
+local db    = require("lapis.db")
+local util  = require('lapis.util')
 -- define app
-local app = lapis.Application()
+local app   = lapis.Application()
 
 -- enable html views
 app:enable('etlua')
@@ -67,6 +68,11 @@ app:get('/post/:postID', function(self)
 	self.page_title = string.match(self.post_content, '{.-}')
 
 	return { render = 'post'}
+end)
+
+app:get('/dbtest', function(self)
+
+	return { render = 'index' }
 end)
 
 return app
