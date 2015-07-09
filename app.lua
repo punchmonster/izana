@@ -36,12 +36,13 @@ app:get('/post/:postID', function(self)
 end)
 
 app:get('/dbtest', function(self)
+	local row_count   = db.select("COUNT(*) from posts" )
 
 	db.insert('posts', {
-		postID = 1,
+		postID = row_count[1]['COUNT(*)'] + 1,
 		postdate = "2015-07-09",
 		posttitle = "about fat",
-		postcontent = "<p>ur fat</p>",
+		postcontent = "This is a testpost, if you read this I hope you get cancer",
 		postauthor = "Jamie Roling"
 	})
 	return { render = 'index' }
