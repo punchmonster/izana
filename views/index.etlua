@@ -1,5 +1,12 @@
-<% for i, thing in pairs(post_list) do %>
+<% for k, v in pairs( table_content ) do %>
     <article>
-    	<%- thing %>
+    	<h2><%- v['posttitle'] %></h2>
+    	<p><%- v['postcontent'] %></p>
+    	<div class="col-50">
+    		&nbsp;
+    	</div>
+    	<div class="col-50">
+    		<a class="read-more" href="<% build_url() %>/post/<%- v['postID'] %>">read more...</a>
+    	</div>
     </article>
- <% end %>
+<% end %>
