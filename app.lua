@@ -1,6 +1,11 @@
 local lapis = require('lapis')
 local db    = require("lapis.db")
 local util  = require('lapis.util')
+local csrf  = require("lapis.csrf")
+
+-- error capturing
+local capture_errors = require("lapis.application").capture_errors
+
 -- define app
 local app   = lapis.Application()
 
@@ -32,9 +37,11 @@ app:get('/post/:postID', function(self)
 
 	-- retrieve all the post information
 	local row_content = db.select("* from posts where postID = ?", postID)
+
 	-- pass post information to the MVC
 	self.post_content = row_content[1]['postcontent']
 	self.post_title   = row_content[1]['posttitle']
+	self.post_date    = row_content[1]['postdate']
 	self.page_title   = 'Izana - ' .. row_content[1]['posttitle']
 
 	return { render = 'post'}
@@ -56,5 +63,16 @@ app:get('/dbtest', function(self)
 	})
 	return { render = 'index' }
 end)
+
+app:get("form", "/form", function(self)
+  self.csrf_token = csrf.generate_token(self)
+  self.form_url = self:url_for("form")
+  return { render = 'submit'}
+end)
+
+app:post("form", "/form", capture_errors(function(self)
+  csrf.assert_token(self)
+  return "The form is valid!"
+end))
 
 return app

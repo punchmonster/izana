@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title><%= page_title %></title>
+  <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700,400italic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/normalize.css">
   <link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/grid.css">
   <link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/main.css">
@@ -14,14 +15,14 @@
 <body>
 	<div class="content grid">
 		<!-- left column -->
-		<div class="col-30 col-m-100 col-s-100 left">
-			<div class="col-100">
-				<h1 class="top-space">Blog</h1>
+		<header class="col-40 col-m-100 col-s-100 left">
+			<div class="col-100 top-space">
+				<h1 class="top-space">Izana CMS</h1>
 			</div>
-		</div>
+		</header>
 
 		<!-- right column -->
-		<div class="col-70 col-m-100 col-s-100 right">
+		<div class="col-60 col-m-100 col-s-100 right">
 			<% content_for("inner") %>
 		</div>
 	</div>

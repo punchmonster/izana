@@ -7,49 +7,56 @@
 }
 
 html {
-	background-size:100% auto;
+	background-size: 100% auto;
 }
 body {
-  color:#333;
+  color: #333;
   font-family: Arial, Helvetica, 'Sans-Serif';
 }
 h1 {
-	margin:0 auto;
-	width:600px;
+	margin: 0 auto;
+	width: 600px;
+  font-size: 50px;
 }
 .left {
 }
 .right {
-  border-left:1px solid #aaa;
-  height:100vh;
+  border-left: 1px solid #aaa;
+  height: 100vh;
   overflow-y: scroll;
 }
 .content {
-	width:100%;
+	width: 100%;
 }
 article {
-  width:60%;
+  width: 60%;
   margin: 0 auto;
   padding-top: 100px;
-  padding-bottom:100px;
-  border-bottom:1px solid #aaa;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #aaa;
 }
 article h2 {
-  font-size:40px;
+  font-size: 40px;
 }
 article p {
-  font-size:22px;
+  font-size: 20px;
   line-height: 1.5;
-  font-family: "GoudyBookletter1911",Georgia,Cambria,"Times New Roman",Times,serif;
+  font-family: "Merriweather",Georgia,Cambria,"Times New Roman",Times,serif;
+  font-weight: 400;
 }
 
 article img {
   margin: 0 auto;
   max-width:100%;
 }
-.read-more {
-  color:#6699FF;
-  float:right;
-  text-decoration:none;
-  font-size:24px;
+article .post-date {
+  font-family: "Merriweather",Georgia,Cambria,"Times New Roman",Times,serif;
+  color: #CC0066;
+  font-size: 16px;
+}
+article .read-more {
+  color: #6699FF;
+  float: right;
+  text-decoration: none;
+  font-size: 20px;
 }

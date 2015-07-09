@@ -1,0 +1,6 @@
+ <form action="<%- form_url %>" method="POST">
+    <input type="hidden" name="csrf_token" value="<%- csrf_token %>">
+    <input type="text" name="author" placeholder="enter name">
+    <input type="textfield" name="post_content" placeholder="Type your blogpost">
+    <input type="submit" value="Submit">
+</form> 

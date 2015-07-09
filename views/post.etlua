@@ -1,4 +1,14 @@
 <article>
+
+	<div class="col-50">
+		<span class="post-date"><%- os.date("%B %d, %H:%M", post_date) %></span>
+	</div>
+
+	<div class="col-50">
+		<span class="author"></span>
+	</div>
+
 	<h2><%- post_title %></h2>
 	<p><%- post_content %></p>
+
 </article>
