@@ -1,3 +1,4 @@
 <article>
-	<%- post_content %>
+	<h2><%- post_title %></h2>
+	<p><%- post_content %></p>
 </article>

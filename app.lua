@@ -46,32 +46,26 @@ end)
 
 app:get('/post/:postID', function(self)
 	-- variable for storing view output
-	local content = nil
+	local postID = self.params.postID
 
-	-- function to read the file
-	function readFile(file)
-		-- assign file to variable
-	    local f = io.open(file, 'rb')
-	    -- check if file exists, if not 404
-	    if f==nil then
-	    	content = '<h2>404 page not found</h2>'
-	    else
-	    	content = f:read('*all')
-	    	f:close()
-	    end
-	    return content
-	end
-
-	-- read the whole file into a string
-	self.post_content = readFile('posts/post' .. self.params.postID .. '.txt')
-	-- set page title
-	self.page_title = string.match(self.post_content, '{.-}')
+	local row_content = db.select("* from posts where postID = ?", postID)
+	-- call database
+	self.post_content = row_content[1]['postcontent']
+	self.post_title   = row_content[1]['posttitle']
+	self.page_title   = 'Izana - ' .. row_content[1]['posttitle']
 
 	return { render = 'post'}
 end)
 
 app:get('/dbtest', function(self)
 
+	db.insert('posts', {
+		postID = 1,
+		postdate = "2015-07-09",
+		posttitle = "about fat",
+		postcontent = "<p>ur fat</p>",
+		postauthor = "Jamie Roling"
+	})
 	return { render = 'index' }
 end)
 
