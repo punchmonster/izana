@@ -7,7 +7,7 @@ Simply copy the files anywhere you want and run
 lapis server
 ```
 
-## Configure port
+## Configure port and database
 Default port is set to 80, to change this open `config.lua` and change the key value for port:
 ```
 config("development", {
@@ -15,6 +15,16 @@ config("development", {
   port = 80
 })
 ```
-
+To set up the database connection, edit the block below with your database settings in `config.lua`.
+```
+config("development", {
+  mysql = {
+    host = "127.0.0.1",
+    user = "my_username",
+    password = "my_password",
+    database = "my_database"
+  }
+})
+```
 ## How to use
-Simply use one of the text files in `/posts` as a template for your blog post.
+- needs to be updated
