@@ -1,5 +1,5 @@
 # Izana
-A simple blog/CMS platform built on [Lapis framework](http://leafo.net/lapis/)
+A simple Lua blog/CMS platform built on [Lapis framework](http://leafo.net/lapis/)
 
 ## How to run
 Simply copy the files anywhere you want and run
