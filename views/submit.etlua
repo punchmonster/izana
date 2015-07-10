@@ -14,8 +14,7 @@
             <input type="text" name="author" placeholder="Author">
         </div>
         <div class="col-100 half-top-space">
-            <textarea name="content" placeholder="Type your blogpost">
-            </textarea>
+            <textarea name="content" placeholder="Type your blogpost"></textarea>
         </div>
         <div class="col-80 half-top-space">
             &nbsp;

@@ -41,7 +41,7 @@ article h2 {
   font-size: 40px;
 }
 article p {
-  font-size: 20px;
+  font-size: 19px;
   line-height: 1.5;
   font-family: "Merriweather",Georgia,Cambria,"Times New Roman",Times,serif;
   font-weight: 400;
@@ -76,6 +76,8 @@ article .social-media-icon:hover {
 .post-form input,
 .post-form textarea {
   width: 100%;
+  font-family: "Merriweather",Georgia,Cambria,"Times New Roman",Times,serif;
+  font-size: 20px;
 }
 .post-form div {
   padding-right: 2%;
