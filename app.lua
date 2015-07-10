@@ -64,27 +64,33 @@ app:get('/dbtest', function(self)
 	return { render = 'index' }
 end)
 
+-- submission form page
 app:get("form", "/form", function(self)
-  self.csrf_token = csrf.generate_token(self)
-  self.form_url = self:url_for("form")
-  return { render = 'submit' }
+	self.csrf_token = csrf.generate_token(self)
+	self.form_url = self:url_for("form")
+
+	self.page_title = 'Submit a post'
+	return { render = 'submit' }
 end)
 
+-- handling the form POST submission
 app:post("form", "/form", capture_errors(function(self)
-  csrf.assert_token(self)
+	csrf.assert_token(self)
 
-  -- retrieve total amount of posts
-  local row_count = db.select("COUNT(*) from posts" )
+	-- retrieve total amount of posts
+	local row_count = db.select("COUNT(*) from posts" )
 
-  -- insert the post into the database
-  db.insert('posts', {
+	-- insert the post into the database
+	db.insert('posts', {
 		postID      = row_count[1]['COUNT(*)'] + 1,
 		postdate    = "2015-07-09",
 		posttitle   = self.req.params_post['title'],
 		postcontent = self.req.params_post['content'],
 		postauthor  = self.req.params_post['author']
 	})
-  return 'post submitted'
+
+	-- response
+ 	return 'post submitted'
 end))
 
 return app
