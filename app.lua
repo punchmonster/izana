@@ -77,20 +77,25 @@ end)
 app:post("form", "/form", capture_errors(function(self)
 	csrf.assert_token(self)
 
-	-- retrieve total amount of posts
-	local row_count = db.select("COUNT(*) from posts" )
+	if self.req.params_post['password'] == 'dickbutt' then
 
-	-- insert the post into the database
-	db.insert('posts', {
-		postID      = row_count[1]['COUNT(*)'] + 1,
-		postdate    = "2015-07-09",
-		posttitle   = self.req.params_post['title'],
-		postcontent = self.req.params_post['content'],
-		postauthor  = self.req.params_post['author']
-	})
+		-- retrieve total amount of posts
+		local row_count = db.select("COUNT(*) from posts" )
 
-	-- response
- 	return 'post submitted'
+		-- insert the post into the database
+		db.insert('posts', {
+			postID      = row_count[1]['COUNT(*)'] + 1,
+			postdate    = "2015-07-09",
+			posttitle   = self.req.params_post['title'],
+			postcontent = self.req.params_post['content'],
+			postauthor  = self.req.params_post['author']
+		})
+
+		-- response
+	 	return 'post submitted'
+	 else
+	 	return 'wrong password'
+	 end
 end))
 
 return app

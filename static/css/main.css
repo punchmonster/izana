@@ -68,7 +68,6 @@ article .social-media-icon {
   margin-right: 5px;
 }
 article .social-media-icon:hover {
-  width: 40px;
   margin-right: 5px;
   transition: all .5s ease;
   filter: grayscale(100%);
@@ -76,6 +75,7 @@ article .social-media-icon:hover {
 .post-form input,
 .post-form textarea {
   width: 100%;
+  padding: 5px 10px;
   font-family: "Merriweather",Georgia,Cambria,"Times New Roman",Times,serif;
   font-size: 20px;
 }
@@ -83,5 +83,45 @@ article .social-media-icon:hover {
   padding-right: 2%;
 }
 .post-form textarea {
+  line-height: 1.5;
   height: 70vh;
+}
+.post-form .password input {
+  width: 30%;
+}
+.post-form .submit-button input {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #47A3FF;
+  border: none;
+  font-family: Helvetica, Arial, 'Sans-Serif';
+  font-size: 21px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/*******************************************/
+/*                                         */
+/*       TABLET THEME CHANGES BELOW        */
+/*                                         */
+/*******************************************/
+@media (min-width: 900px) and (max-width: 1240px) {
+
+article .social-media-icon {
+  width: 60px;
+}
+
+}
+
+/*******************************************/
+/*                                         */
+/*       MOBILE THEME CHANGES BELOW        */
+/*                                         */
+/*******************************************/
+@media (max-width: 900px) {
+
+article .social-media-icon {
+  width: 80px;
+}
+
 }
