@@ -13,8 +13,7 @@ local app   = lapis.Application()
 app:enable('etlua')
 app.layout = require 'views.layout'
 
-
--- main inex page
+-- main index page
 app:get('/', function(self)
 
 	-- retrieve posts table rowcount
@@ -43,6 +42,7 @@ app:get('/post/:postID', function(self)
 	self.post_title   = row_content[1]['posttitle']
 	self.post_date    = row_content[1]['postdate']
 	self.page_title   = 'Izana - ' .. row_content[1]['posttitle']
+	self.post_author  = row_content[1]['postauthor']
 
 	return { render = 'post' }
 end)
