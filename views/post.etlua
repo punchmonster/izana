@@ -9,7 +9,7 @@
 	</div>
 
 	<h2><%- post_title %></h2>
-	<p><%- post_content %></p>
+	<%- post_content %>
 
 	<div class="col-50 top-space bottom-space">
 		<a class="" href="<% build_url() %>/#"><img class="social-media-icon" src="<% build_url() %>/static/img/googleplus.png" alt="googleplus" /></a>

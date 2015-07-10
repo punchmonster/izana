@@ -47,34 +47,18 @@ app:get('/post/:postID', function(self)
 	return { render = 'post' }
 end)
 
--- test function for adding test posts to database
-app:get('/dbtest', function(self)
-
-	-- retrieve total amount of posts
-	local row_count = db.select("COUNT(*) from posts" )
-
-	-- insert the post into the database
-	db.insert('posts', {
-		postID      = row_count[1]['COUNT(*)'] + 1,
-		postdate    = "2015-07-09",
-		posttitle   = "about fat",
-		postcontent = "This is a testpost, if you read this I hope you get cancer",
-		postauthor  = "Jamie Roling"
-	})
-	return { render = 'index' }
-end)
-
 -- submission form page
-app:get("form", "/form", function(self)
+app:get("submit", "/submit", function(self)
 	self.csrf_token = csrf.generate_token(self)
-	self.form_url = self:url_for("form")
+	self.submit_url = self:url_for("submit")
 
-	self.page_title = 'Submit a post'
+	--page title
+	self.page_title = 'Izana - submit a post'
 	return { render = 'submit' }
 end)
 
 -- handling the form POST submission
-app:post("form", "/form", capture_errors(function(self)
+app:post("submit", "/submit", capture_errors(function(self)
 	csrf.assert_token(self)
 
 	if self.req.params_post['password'] == 'dickbutt' then
@@ -85,7 +69,7 @@ app:post("form", "/form", capture_errors(function(self)
 		-- insert the post into the database
 		db.insert('posts', {
 			postID      = row_count[1]['COUNT(*)'] + 1,
-			postdate    = "2015-07-09",
+			postdate    = ngx.time(),
 			posttitle   = self.req.params_post['title'],
 			postcontent = self.req.params_post['content'],
 			postauthor  = self.req.params_post['author']
