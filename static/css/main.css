@@ -32,7 +32,6 @@ h1 {
 	width: 100%;
 }
 article {
-  width: 60%;
   margin: 0 auto;
   padding-top: 100px;
   padding-bottom: 50px;
@@ -67,4 +66,20 @@ article .read-more {
 article .social-media-icon {
   width: 40px;
   margin-right: 5px;
+}
+article .social-media-icon:hover {
+  width: 40px;
+  margin-right: 5px;
+  transition: all .5s ease;
+  filter: grayscale(100%);
+}
+.post-form input,
+.post-form textarea {
+  width: 100%;
+}
+.post-form div {
+  padding-right: 2%;
+}
+.post-form textarea {
+  height: 70vh;
 }

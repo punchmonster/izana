@@ -26,7 +26,7 @@ app:get('/', function(self)
 	-- set page title
 	self.page_title = 'Izana - home'
 
-	return { render = 'index'}
+	return { render = 'index' }
 end)
 
 -- individual article pages
@@ -44,7 +44,7 @@ app:get('/post/:postID', function(self)
 	self.post_date    = row_content[1]['postdate']
 	self.page_title   = 'Izana - ' .. row_content[1]['posttitle']
 
-	return { render = 'post'}
+	return { render = 'post' }
 end)
 
 -- test function for adding test posts to database
@@ -67,13 +67,24 @@ end)
 app:get("form", "/form", function(self)
   self.csrf_token = csrf.generate_token(self)
   self.form_url = self:url_for("form")
-  return { render = 'submit'}
+  return { render = 'submit' }
 end)
 
 app:post("form", "/form", capture_errors(function(self)
   csrf.assert_token(self)
 
-  return "<h2>hello</h2>"
+  -- retrieve total amount of posts
+  local row_count = db.select("COUNT(*) from posts" )
+
+  -- insert the post into the database
+  db.insert('posts', {
+		postID      = row_count[1]['COUNT(*)'] + 1,
+		postdate    = "2015-07-09",
+		posttitle   = self.req.params_post['title'],
+		postcontent = self.req.params_post['content'],
+		postauthor  = self.req.params_post['author']
+	})
+  return 'post submitted'
 end))
 
 return app

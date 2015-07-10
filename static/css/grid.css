@@ -9,7 +9,9 @@
   padding-right: 0px;
 }
 /* responsive */
-
+article {
+  width: 60%;
+}
 .col-0 {
   width: 0%;
 }
@@ -108,8 +110,10 @@
 }
 
 /* tablet sizes */
-@media (min-width: 800px) and (max-width: 1240px) {
-
+@media (min-width: 900px) and (max-width: 1240px) {
+article {
+  width: 80%;
+}
 .col-m-0 {
   width: 0%;
 }
@@ -210,8 +214,10 @@
 }
 
 /* phone sizes */
-@media (max-width: 800px) {
-
+@media (max-width: 900px) {
+article {
+  width: 90%;
+}
 .col-s-0 {
   width: 0%;
 }

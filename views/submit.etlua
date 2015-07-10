@@ -1,6 +1,31 @@
- <form action="<%- form_url %>" method="POST">
-    <input type="hidden" name="csrf_token" value="<%- csrf_token %>">
-    <input type="text" name="author" placeholder="enter name">
-    <input type="textfield" name="post_content" placeholder="Type your blogpost">
-    <input type="submit" value="Submit">
-</form> 
+ <div class="col-15">
+    &nbsp;
+ </div>
+
+ <article class="col-70">
+
+    <h2>Submit a post</h2>
+    <form action="<%- form_url %>" method="POST" class="post-form">
+        <input type="hidden" name="csrf_token" value="<%- csrf_token %>">
+        <div class="col-70">
+            <input type="text" name="title" placeholder="Title">
+        </div>
+        <div class="col-30">
+            <input type="text" name="author" placeholder="Author">
+        </div>
+        <div class="col-100 half-top-space">
+            <textarea name="content" placeholder="Type your blogpost">
+            </textarea>
+        </div>
+        <div class="col-80 half-top-space">
+            &nbsp;
+        </div>
+        <div class="col-20 half-top-space">
+            <input type="submit" value="Submit">
+        </div>
+    </form> 
+</article>
+
+ <div class="col-15">
+    &nbsp;
+ </div>
