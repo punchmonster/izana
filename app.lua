@@ -16,7 +16,7 @@ app:enable('etlua')
 app.layout = require 'views.layout'
 
 -- main index page
-app:get('/', function(self)
+app:match('index', '/', function(self)
 
 	-- retrieve posts table rowcount
 	local row_count   = db.select("COUNT(*) from posts" )
@@ -31,7 +31,7 @@ app:get('/', function(self)
 end)
 
 -- individual article pages
-app:get('/post/:postID', function(self)
+app:match('/post/:postID', function(self)
 
 	-- variable for storing view output
 	local postID      = self.params.postID
