@@ -5,7 +5,8 @@
 	<head>
 
 		<meta charset="UTF-8">
-		<meta name="author" content="<%- post_author %>">
+		<meta name="author" content="<%- page_author %>">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<title><%= page_title %></title>
 		<link href='http://fonts.googleapis.com/css?family=Merriweather:400,700,400italic' rel='stylesheet' type='text/css'>
@@ -19,6 +20,7 @@
 	</head>
 
 	<body>
+		<!-- h1 is hidden using CSS -->
 		<h1><%= page_title %></h1>
 
 		<div class="content grid">
@@ -26,7 +28,7 @@
 			<!-- left column -->
 			<header class="col-40 col-m-100 col-s-100 left">
 
-				<!-- navigation -->
+				<!-- navigation bar -->
 				<div class="nav">
 					<div class="col-30">
 						&nbsp;
@@ -36,7 +38,7 @@
 						<ul>
 							<li><a href="#">contact</a></li>
 							<li><a href="#">portfolio</a></li>
-							<li><a href="<% url_for("index") %>">home</a></li>
+							<li><a href="<% url_for('index') %>">home</a></li>
 						</ul>
 					</nav>
 					<div style="clear: both;"></div>

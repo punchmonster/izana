@@ -15,6 +15,13 @@ local app   = lapis.Application()
 app:enable('etlua')
 app.layout = require 'views.layout'
 
+-- runs before action
+app.__class:before_filter(function(self)
+	
+	-- set page defaults
+	self.page_title = 'Poopy Pants'
+end)
+
 -- main index page
 app:match('index', '/', function(self)
 
@@ -44,7 +51,7 @@ app:match('/post/:postID', function(self)
 	self.post_title   = row_content[1]['posttitle']
 	self.post_date    = row_content[1]['postdate']
 	self.page_title   = 'Izana - ' .. row_content[1]['posttitle']
-	self.post_author  = row_content[1]['postauthor']
+	self.page_author  = row_content[1]['postauthor']
 
 	return { render = 'post' }
 end)
@@ -80,7 +87,7 @@ app:post("submit", "/submit", capture_errors(function(self)
 		-- response
 	 	return 'post submitted'
 	 else
-	 	return 'wrong password'
+	 	return { redirect_to = self:url_for("submit") }
 	 end
 end))
 
