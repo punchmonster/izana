@@ -26,6 +26,7 @@
 			<!-- left column -->
 			<header class="col-40 col-m-100 col-s-100 left">
 
+				<!-- navigation -->
 				<div class="nav">
 					<div class="col-30">
 						&nbsp;
@@ -35,24 +36,27 @@
 						<ul>
 							<li><a href="#">contact</a></li>
 							<li><a href="#">portfolio</a></li>
-							<li><a href="#">home</a></li>
+							<li><a href="<% url_for("index") %>">home</a></li>
 						</ul>
 					</nav>
 					<div style="clear: both;"></div>
 				</div>
 
 
-				<div>
+				<div class="about">
 					<div class="col-10">
 						&nbsp;
 					</div>
 
-					<div class="col-80">
+					<div class="col-15">
+						<img class="portrait" src="<% build_url() %>/static/img/portrait.png" alt="portrait" />
 					</div>
 
-					<div class="col-10">
-						&nbsp;
+					<div class="col-60">
+						<h2>Hi, I'm Jamie</h2>
+						<p>I have a deep love for videogames, ice cream, nerd culture, and all things technology. Once in a while I may even decide to write about these things.</p>
 					</div>
+
 					<div style="clear: both;"></div>
 				</div>
 

@@ -21,14 +21,15 @@ h1 {
   position: absolute;
   left: -10000px;
 }
+h2 {
+  font-size:40px;
+}
 .nav {
   background-color: #CC0066;
   background-image: url('../img/logo.png');
   background-size: contain;
   background-repeat: no-repeat;
-}
-.nav .logo {
-  height: 0%;
+  background-position: 2% 0%;
 }
 nav ul {
   list-style: none;
@@ -55,6 +56,22 @@ nav li:hover {
 nav li a:hover {
   color: #CC0066;
 }
+header .portrait {
+  width:70%;
+  border-radius:15px;
+  display:block;
+  margin: 8px auto;
+}
+header .about {
+  margin-top: 50px;
+}
+header .about h2 {
+  margin: 0;
+}
+header .about p {
+  font-family: "Merriweather",Georgia,Cambria,"Times New Roman",Times,serif;
+  font-size: 18px;
+}
 .left {
 }
 .right {
@@ -71,7 +88,7 @@ article {
   padding-bottom: 50px;
   border-bottom: 1px solid #aaa;
 }
-article h2 {
+article h3 {
   font-size: 40px;
 }
 article p {

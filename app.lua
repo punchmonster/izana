@@ -9,6 +9,8 @@ local capture_errors = require("lapis.application").capture_errors
 -- define app
 local app   = lapis.Application()
 
+-- self.post_author = 'Jamie Röling'
+
 -- enable html views
 app:enable('etlua')
 app.layout = require 'views.layout'

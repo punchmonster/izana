@@ -9,7 +9,7 @@
 			<span class="author"></span>
 		</div>
 
-    	<h2><%- v['posttitle'] %></h2>    	
+    	<h3><%- v['posttitle'] %></h3>    	
     	<p><%- string.sub(v['postcontent'],1,900) %>...</p>
     	<div class="col-50 top-space">
     		<a class="" href="<% build_url() %>/#"><img class="social-media-icon" src="<% build_url() %>/static/img/googleplus.png" alt="googleplus" /></a>
@@ -22,6 +22,6 @@
     	</div>
 
     	<div style="clear: both;"></div>
-    	
+
     </article>
 <% end %>

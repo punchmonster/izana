@@ -8,7 +8,7 @@
 		<span class="author"></span>
 	</div>
 
-	<h2><%- post_title %></h2>
+	<h3><%- post_title %></h3>
 	<%- post_content %>
 
 	<div class="col-50 top-space bottom-space">
