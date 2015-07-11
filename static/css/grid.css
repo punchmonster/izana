@@ -216,7 +216,7 @@ article {
 /* phone sizes */
 @media (max-width: 900px) {
 article {
-  width: 90%;
+  width: 95%;
 }
 .col-s-0 {
   width: 0%;

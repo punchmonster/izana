@@ -11,15 +11,49 @@ html {
 }
 body {
   color: #333;
-  font-family: Arial, Helvetica, 'Sans-Serif';
+  font-family: Helvetica, Arial, 'Sans-Serif';
 }
 a {
   text-decoration: none;
 }
 h1 {
-	margin: 0 auto;
-	width: 600px;
   font-size: 50px;
+  position: absolute;
+  left: -10000px;
+}
+.nav {
+  background-color: #CC0066;
+  background-image: url('../img/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.nav .logo {
+  height: 0%;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+nav li {
+  float: right;
+  display: inline-block;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+nav li a {
+  font-size: 30px;
+  color: #FFF;
+  padding: 8px 15px;
+  font-family: "Merriweather",Georgia,Cambria,"Times New Roman",Times,serif;
+  font-weight:700;
+}
+nav li:hover {
+  background: #fff;
+  color: #CC0066;
+}
+nav li a:hover {
+  color: #CC0066;
 }
 .left {
 }
@@ -110,6 +144,12 @@ article .social-media-icon:hover {
 article .social-media-icon {
   width: 60px;
 }
+article .read-more {
+  font-size:34px;
+}
+nav li a {
+  font-size:45px;
+}
 
 }
 
@@ -122,6 +162,12 @@ article .social-media-icon {
 
 article .social-media-icon {
   width: 80px;
+}
+article .read-more {
+  font-size:40px;
+}
+nav li a {
+  font-size:45px;
 }
 
 }

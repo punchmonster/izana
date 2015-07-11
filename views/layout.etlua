@@ -1,32 +1,70 @@
 <!-- views/layout.etlua -->
 <!DOCTYPE HTML>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="author" content="<%- post_author %>">
 
-  <title><%= page_title %></title>
-  <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700,400italic' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/normalize.css">
-  <link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/grid.css">
-  <link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/main.css">
-  <style>
-  
-  </style>
-</head>
-<body>
-	<div class="content grid">
-		<!-- left column -->
-		<header class="col-40 col-m-100 col-s-100 left">
-			<div class="col-100 top-space">
-				<h1 class="top-space">Izana CMS</h1>
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="author" content="<%- post_author %>">
+
+		<title><%= page_title %></title>
+		<link href='http://fonts.googleapis.com/css?family=Merriweather:400,700,400italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/normalize.css">
+		<link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/grid.css">
+		<link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/main.css">
+		<style>
+
+		</style>
+
+	</head>
+
+	<body>
+		<h1><%= page_title %></h1>
+
+		<div class="content grid">
+
+			<!-- left column -->
+			<header class="col-40 col-m-100 col-s-100 left">
+
+				<div class="nav">
+					<div class="col-30">
+						&nbsp;
+					</div>
+
+					<nav class="col-70">
+						<ul>
+							<li><a href="#">contact</a></li>
+							<li><a href="#">portfolio</a></li>
+							<li><a href="#">home</a></li>
+						</ul>
+					</nav>
+					<div style="clear: both;"></div>
+				</div>
+
+
+				<div>
+					<div class="col-10">
+						&nbsp;
+					</div>
+
+					<div class="col-80">
+					</div>
+
+					<div class="col-10">
+						&nbsp;
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+
+			</header>
+
+			<!-- right column -->
+			<div class="col-60 col-m-100 col-s-100 right">
+				<% content_for("inner") %>
 			</div>
-		</header>
 
-		<!-- right column -->
-		<div class="col-60 col-m-100 col-s-100 right">
-			<% content_for("inner") %>
 		</div>
-	</div>
-</body>
+
+	</body>
+
 </html>
