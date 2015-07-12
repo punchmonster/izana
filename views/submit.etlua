@@ -16,8 +16,8 @@
         <div class="col-100 half-top-space">
             <textarea name="content" placeholder="Type your blogpost"></textarea>
         </div>
-        <div class="col-80 half-top-space password">
-            <input type="password" name="password" placeholder="Password">
+        <div class="col-80 half-top-space">
+            &nbsp;
         </div>
         <div class="col-20 half-top-space submit-button">
             <input type="submit" value="Submit">

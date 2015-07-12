@@ -4,7 +4,7 @@
 
  <article class="col-70">
 
-    <h2>Submit a post</h2>
+    <h2>Login</h2>
     <form action="<%- submit_url %>" method="POST" class="post-form">
         <input type="hidden" name="csrf_token" value="<%- csrf_token %>">
         <div class="col-100 half-top-space">

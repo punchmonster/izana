@@ -71,7 +71,7 @@ app:get("submit", "/submit", function(self)
 end)
 
 -- handling the form POST submission
-app:post("submit", "/submit", capture_errors(function(self)
+app:post('submit', '/submit', capture_errors(function(self)
 	csrf.assert_token(self)
 
 	if self.cookies.foo == 'Jamie' then
@@ -101,29 +101,32 @@ app:get('login', '/login', function(self)
 	self.submit_url = self:url_for('login')
 
 	-- set page info
-	self.page_title = 'Izana - test cookies'
+	self.page_title = 'Izana - login'
 	self.page_title = 'Jamie Röling'
 
 	if self.cookies.foo == 'Jamie' then
 
-		return "you're already logged in"
+		return 'you\'re already logged in'
 	else
-		return { render = 'test_account' }
+		return { render = 'login' }
 	end
 end)
 
 -- handling the login POST submission
-app:post("login", "/login", capture_errors(function(self)
+app:post('login', '/login', capture_errors(function(self)
 	csrf.assert_token(self)
 
-	if self.req.params_post['password'] == 'dickbutt' then
+	local user_info = db.select("* from users where username = ?", self.req.params_post['username'])
+
+	if self.req.params_post['password'] == user_info[1]['password'] then
 		self.cookies.foo = "Jamie"
 
 
 		-- response
 	 	return 'logged in'
 	 else
-	 	return { redirect_to = self:url_for("test_account") }
+	 	-- if password is wrong, redirect to login
+	 	return { redirect_to = self:url_for('login') }
 	 end
 end))
 
