@@ -59,7 +59,7 @@ app:get("submit", "/submit", function(self)
 
 	-- set page info
 	self.page_title = 'Izana - submit a post'
-	self.page_title = 'Jamie Röling'
+	self.page_author = 'Jamie Röling'
 
 	-- check if person is logged in
 	if self.cookies.foo == 'Jamie' then
@@ -102,7 +102,7 @@ app:get('login', '/login', function(self)
 
 	-- set page info
 	self.page_title = 'Izana - login'
-	self.page_title = 'Jamie Röling'
+	self.page_author = 'Jamie Röling'
 
 	if self.cookies.foo == 'Jamie' then
 
