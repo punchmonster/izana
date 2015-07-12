@@ -12,13 +12,13 @@
     	<h3><%- v['posttitle'] %></h3>    	
     	<p><%- string.sub(v['postcontent'],1,900) %>...</p>
     	<div class="col-50 top-space">
-    		<a class="" href="<% build_url() %>/#"><img class="social-media-icon" src="<% build_url() %>/static/img/googleplus.png" alt="googleplus" /></a>
-    		<a class="" href="<% build_url() %>/#"><img class="social-media-icon" src="<% build_url() %>/static/img/facebook.png" alt="facebook" /></a>
-    		<a class="" href="<% build_url() %>/#"><img class="social-media-icon" src="<% build_url() %>/static/img/twitter.png" alt="twitter" /></a>
+    		<a class="" href="<%- build_url() %>/#"><img class="social-media-icon" src="<%- build_url() %>/static/img/googleplus.png" alt="googleplus" /></a>
+    		<a class="" href="<%- build_url() %>/#"><img class="social-media-icon" src="<%- build_url() %>/static/img/facebook.png" alt="facebook" /></a>
+    		<a class="" href="<%- build_url() %>/#"><img class="social-media-icon" src="<%- build_url() %>/static/img/twitter.png" alt="twitter" /></a>
     	</div>
 
     	<div class="col-50 top-space">
-    		<a class="read-more" href="<% build_url() %>/post/<%- v['postID'] %>">read more</a>
+    		<a class="read-more" href="<%- build_url() %>/post/<%- v['postID'] %>">read more</a>
     	</div>
 
     	<div style="clear: both;"></div>

@@ -15,13 +15,6 @@ local app   = lapis.Application()
 app:enable('etlua')
 app.layout = require 'views.layout'
 
--- runs before action
-app.__class:before_filter(function(self)
-	
-	-- set page defaults
-	self.page_title = 'Poopy Pants'
-end)
-
 -- main index page
 app:match('index', '/', function(self)
 
@@ -31,8 +24,9 @@ app:match('index', '/', function(self)
 	-- retrieve post list
 	self.table_content = db.select("* from posts where postID >= 1 and postID <= ? order by postID DESC", row_count[1]['COUNT(*)'] )
 
-	-- set page title
+	-- set page info
 	self.page_title = 'Izana - home'
+	self.page_author = 'Jamie Röling'
 
 	return { render = 'index' }
 end)
@@ -50,6 +44,8 @@ app:match('/post/:postID', function(self)
 	self.post_content = row_content[1]['postcontent']
 	self.post_title   = row_content[1]['posttitle']
 	self.post_date    = row_content[1]['postdate']
+
+	-- set page info
 	self.page_title   = 'Izana - ' .. row_content[1]['posttitle']
 	self.page_author  = row_content[1]['postauthor']
 
@@ -61,16 +57,24 @@ app:get("submit", "/submit", function(self)
 	self.csrf_token = csrf.generate_token(self)
 	self.submit_url = self:url_for("submit")
 
-	--page title
+	-- set page info
 	self.page_title = 'Izana - submit a post'
-	return { render = 'submit' }
+	self.page_title = 'Jamie Röling'
+
+	-- check if person is logged in
+	if self.cookies.foo == 'Jamie' then
+
+		return { render = 'submit' }
+	else
+		return { redirect_to = self:url_for('login') }
+	end
 end)
 
 -- handling the form POST submission
 app:post("submit", "/submit", capture_errors(function(self)
 	csrf.assert_token(self)
 
-	if self.req.params_post['password'] == 'dickbutt' then
+	if self.cookies.foo == 'Jamie' then
 
 		-- retrieve total amount of posts
 		local row_count = db.select("COUNT(*) from posts" )
@@ -87,7 +91,39 @@ app:post("submit", "/submit", capture_errors(function(self)
 		-- response
 	 	return 'post submitted'
 	 else
-	 	return { redirect_to = self:url_for("submit") }
+	 	return { redirect_to = self:url_for('login') }
+	 end
+end))
+
+-- login page
+app:get('login', '/login', function(self)
+	self.csrf_token = csrf.generate_token(self)
+	self.submit_url = self:url_for('login')
+
+	-- set page info
+	self.page_title = 'Izana - test cookies'
+	self.page_title = 'Jamie Röling'
+
+	if self.cookies.foo == 'Jamie' then
+
+		return "you're already logged in"
+	else
+		return { render = 'test_account' }
+	end
+end)
+
+-- handling the login POST submission
+app:post("login", "/login", capture_errors(function(self)
+	csrf.assert_token(self)
+
+	if self.req.params_post['password'] == 'dickbutt' then
+		self.cookies.foo = "Jamie"
+
+
+		-- response
+	 	return 'logged in'
+	 else
+	 	return { redirect_to = self:url_for("test_account") }
 	 end
 end))
 

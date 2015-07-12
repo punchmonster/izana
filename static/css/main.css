@@ -158,16 +158,9 @@ article .social-media-icon:hover {
 /*       TABLET THEME CHANGES BELOW        */
 /*                                         */
 /*******************************************/
-@media (min-width: 900px) and (max-width: 1240px) {
-
-article .social-media-icon {
-  width: 60px;
-}
-article .read-more {
-  font-size:34px;
-}
-nav li a {
-  font-size:45px;
+@media (max-width: 1240px) {
+article {
+  width: 90%;
 }
 
 }
@@ -178,15 +171,8 @@ nav li a {
 /*                                         */
 /*******************************************/
 @media (max-width: 900px) {
-
-article .social-media-icon {
-  width: 80px;
-}
-article .read-more {
-  font-size:40px;
-}
-nav li a {
-  font-size:45px;
+article {
+  width: 95%;
 }
 
 }

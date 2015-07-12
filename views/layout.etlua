@@ -10,9 +10,9 @@
 
 		<title><%= page_title %></title>
 		<link href='http://fonts.googleapis.com/css?family=Merriweather:400,700,400italic' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/normalize.css">
-		<link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/grid.css">
-		<link rel="stylesheet" type="text/css" href="<% build_url() %>/static/css/main.css">
+		<link rel="stylesheet" type="text/css" href="<%- build_url() %>/static/css/normalize.css">
+		<link rel="stylesheet" type="text/css" href="<%- build_url() %>/static/css/grid.css">
+		<link rel="stylesheet" type="text/css" href="<%- build_url() %>/static/css/main.css">
 		<style>
 
 		</style>
@@ -30,15 +30,15 @@
 
 				<!-- navigation bar -->
 				<div class="nav">
-					<div class="col-30">
+					<div class="col-0">
 						&nbsp;
 					</div>
 
-					<nav class="col-70">
+					<nav class="col-100">
 						<ul>
 							<li><a href="#">contact</a></li>
 							<li><a href="#">portfolio</a></li>
-							<li><a href="<% url_for('index') %>">home</a></li>
+							<li><a href="<%- build_url() %>">home</a></li>
 						</ul>
 					</nav>
 					<div style="clear: both;"></div>

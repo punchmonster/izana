@@ -1,0 +1,24 @@
+ <div class="col-15">
+    &nbsp;
+ </div>
+
+ <article class="col-70">
+
+    <h2>Submit a post</h2>
+    <form action="<%- submit_url %>" method="POST" class="post-form">
+        <input type="hidden" name="csrf_token" value="<%- csrf_token %>">
+        <div class="col-100 half-top-space">
+            <input type="text" name="username" placeholder="Username">
+        </div>
+        <div class="col-80 half-top-space">
+            <input type="password" name="password" placeholder="Password">
+        </div>
+        <div class="col-20 half-top-space submit-button">
+            <input type="submit" value="Submit">
+        </div>
+    </form> 
+</article>
+
+ <div class="col-15">
+    &nbsp;
+ </div>

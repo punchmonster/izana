@@ -111,9 +111,6 @@ article {
 
 /* tablet sizes */
 @media (min-width: 900px) and (max-width: 1240px) {
-article {
-  width: 80%;
-}
 .col-m-0 {
   width: 0%;
 }
@@ -215,9 +212,6 @@ article {
 
 /* phone sizes */
 @media (max-width: 900px) {
-article {
-  width: 95%;
-}
 .col-s-0 {
   width: 0%;
 }
