@@ -1,8 +1,10 @@
+-- libraries
 local lapis = require('lapis')
 local db    = require('lapis.db')
 local util  = require('lapis.util')
 local csrf  = require('lapis.csrf')
-local md5  = require('lib.md5')
+local md5   = require('lib.md5')
+
 -- error capturing
 local capture_errors = require('lapis.application').capture_errors
 
@@ -108,6 +110,7 @@ app:get('login', '/login', function(self)
 	-- check if the client is logged in
 	if self.cookies.izana_session == 'ok' then
 
+		-- if logged in, redirect to posting window
 		return { redirect_to = self:url_for('submit') }
 	else
 		return { render = 'login' }
@@ -127,7 +130,7 @@ app:post('login', '/login', capture_errors(function(self)
 		-- create
 		self.cookies.izana_session = 'ok'
 
-		-- response
+		-- redirect to submit page
 	 	return { redirect_to = self:url_for('submit') }
 	 else
 	 	-- if password is wrong, redirect to login
