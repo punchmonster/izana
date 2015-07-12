@@ -1,10 +1,10 @@
 local lapis = require('lapis')
-local db    = require("lapis.db")
+local db    = require('lapis.db')
 local util  = require('lapis.util')
-local csrf  = require("lapis.csrf")
-
+local csrf  = require('lapis.csrf')
+local md5  = require('lib.md5')
 -- error capturing
-local capture_errors = require("lapis.application").capture_errors
+local capture_errors = require('lapis.application').capture_errors
 
 -- define app
 local app   = lapis.Application()
@@ -62,7 +62,7 @@ app:get("submit", "/submit", function(self)
 	self.page_author = 'Jamie Röling'
 
 	-- check if person is logged in
-	if self.cookies.foo == 'Jamie' then
+	if self.cookies.izana_session == 'ok' then
 
 		return { render = 'submit' }
 	else
@@ -74,7 +74,8 @@ end)
 app:post('submit', '/submit', capture_errors(function(self)
 	csrf.assert_token(self)
 
-	if self.cookies.foo == 'Jamie' then
+	-- check session
+	if self.cookies.izana_session == 'ok' then
 
 		-- retrieve total amount of posts
 		local row_count = db.select("COUNT(*) from posts" )
@@ -89,24 +90,25 @@ app:post('submit', '/submit', capture_errors(function(self)
 		})
 
 		-- response
-	 	return 'post submitted'
-	 else
+		return 'post submitted'
+	else
 	 	return { redirect_to = self:url_for('login') }
-	 end
+	end
 end))
 
 -- login page
 app:get('login', '/login', function(self)
-	self.csrf_token = csrf.generate_token(self)
-	self.submit_url = self:url_for('login')
+	self.csrf_token  = csrf.generate_token(self)
+	self.submit_url  = self:url_for('login')
 
 	-- set page info
-	self.page_title = 'Izana - login'
+	self.page_title  = 'Izana - login'
 	self.page_author = 'Jamie Röling'
 
-	if self.cookies.foo == 'Jamie' then
+	-- check if the client is logged in
+	if self.cookies.izana_session == 'ok' then
 
-		return 'you\'re already logged in'
+		return { redirect_to = self:url_for('submit') }
 	else
 		return { render = 'login' }
 	end
@@ -116,14 +118,17 @@ end)
 app:post('login', '/login', capture_errors(function(self)
 	csrf.assert_token(self)
 
-	local user_info = db.select("* from users where username = ?", self.req.params_post['username'])
+	-- retrieve user information from database
+	local user_info = db.select('* from users where username = ?', string.lower( self.req.params_post['username'] ) ) 
 
-	if self.req.params_post['password'] == user_info[1]['password'] then
-		self.cookies.foo = "Jamie"
-
+	-- check if submitted password matches database
+	if md5.sumhexa( self.req.params_post['password'] ) == user_info[1]['password'] then
+		
+		-- create
+		self.cookies.izana_session = 'ok'
 
 		-- response
-	 	return 'logged in'
+	 	return { redirect_to = self:url_for('submit') }
 	 else
 	 	-- if password is wrong, redirect to login
 	 	return { redirect_to = self:url_for('login') }
