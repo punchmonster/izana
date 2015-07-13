@@ -21,10 +21,10 @@ app.layout = require 'views.layout'
 app:match('index', '/', function(self)
 
 	-- retrieve posts table rowcount
-	local row_count   = db.select("COUNT(*) from posts" )
+	local row_count    = db.select('COUNT(*) from posts')
 
 	-- retrieve post list
-	self.table_content = db.select("* from posts where postID >= 1 and postID <= ? order by postID DESC", row_count[1]['COUNT(*)'] )
+	self.table_content = db.select('* from posts where postID >= 1 and postID <= ? order by postID DESC', row_count[1]['COUNT(*)'] )
 
 	-- set page info
 	self.page_title = 'Izana - home'
@@ -40,7 +40,7 @@ app:match('/post/:postID', function(self)
 	local postID      = self.params.postID
 
 	-- retrieve all the post information
-	local row_content = db.select("* from posts where postID = ?", postID)
+	local row_content = db.select('* from posts where postID = ?', postID)
 
 	-- pass post information to the MVC
 	self.post_content = row_content[1]['postcontent']
@@ -55,9 +55,9 @@ app:match('/post/:postID', function(self)
 end)
 
 -- submission form page
-app:get("submit", "/submit", function(self)
+app:get('submit', '/submit', function(self)
 	self.csrf_token = csrf.generate_token(self)
-	self.submit_url = self:url_for("submit")
+	self.submit_url = self:url_for('submit')
 
 	-- set page info
 	self.page_title = 'Izana - submit a post'
@@ -80,7 +80,7 @@ app:post('submit', '/submit', capture_errors(function(self)
 	if self.cookies.izana_session == 'ok' then
 
 		-- retrieve total amount of posts
-		local row_count = db.select("COUNT(*) from posts" )
+		local row_count = db.select('COUNT(*) from posts')
 
 		-- insert the post into the database
 		db.insert('posts', {
