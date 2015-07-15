@@ -24,7 +24,7 @@ app:match('index', '/', function(self)
 	local row_count    = db.select('COUNT(*) from posts')
 
 	-- retrieve post list
-	self.table_content = db.select('* from posts where postID >= 1 and postID <= ? order by postID DESC', row_count[1]['COUNT(*)'] )
+	self.table_content = db.select('* from posts order by postID DESC limit 10', row_count[1]['COUNT(*)'] )
 
 	-- set page info
 	self.page_title = 'Izana - home'
@@ -46,6 +46,7 @@ app:match('/post/:postID', function(self)
 	self.post_content = row_content[1]['postcontent']
 	self.post_title   = row_content[1]['posttitle']
 	self.post_date    = row_content[1]['postdate']
+	self.post_ID      = row_content[1]['postID']
 
 	-- set page info
 	self.page_title   = 'Izana - ' .. row_content[1]['posttitle']
@@ -79,12 +80,12 @@ app:post('submit', '/submit', capture_errors(function(self)
 	-- check session
 	if self.cookies.izana_session == 'ok' then
 
-		-- retrieve total amount of posts
-		local row_count = db.select('COUNT(*) from posts')
+		-- check latest post ID
+		local row_info  = db.select('* from posts order by postID DESC limit 1' )
 
 		-- insert the post into the database
 		db.insert('posts', {
-			postID      = row_count[1]['COUNT(*)'] + 1,
+			postID      = row_info[1]['postID'] + 1,
 			postdate    = ngx.time(),
 			posttitle   = self.req.params_post['title'],
 			postcontent = self.req.params_post['content'],

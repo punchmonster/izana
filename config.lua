@@ -4,11 +4,16 @@ local config = require("lapis.config")
 config("development", {
   port = 80
 })
+
+config("development", {
+  secret = "rainbownigger"
+})
+
 config("development", {
   mysql = {
     host = "127.0.0.1",
-    user = "my_user",
-    password = "my_pass",
+    user = "root",
+    password = "poopdick",
     database = "izanaDB"
   }
 })

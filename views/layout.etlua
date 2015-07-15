@@ -36,8 +36,6 @@
 
 					<nav class="col-100">
 						<ul>
-							<li><a href="#">contact</a></li>
-							<li><a href="#">portfolio</a></li>
 							<li><a href="<%- build_url() %>">home</a></li>
 						</ul>
 					</nav>

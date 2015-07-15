@@ -99,9 +99,12 @@ article p {
   font-family: "Merriweather",Georgia,Cambria,"Times New Roman",Times,serif;
   font-weight: 400;
 }
-
+article a {
+  color: #6699FF;
+}
 article img {
   margin: 0 auto;
+  display: block;
   max-width:100%;
 }
 article .post-date {
@@ -118,6 +121,7 @@ article .read-more {
 }
 article .social-media-icon {
   width: 40px;
+  display: inline-block;
   margin-right: 5px;
 }
 article .social-media-icon:hover {
