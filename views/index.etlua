@@ -13,8 +13,8 @@
     	<p><%- string.sub(v['postcontent'],1,900) %>...</p>
     	<div class="col-50 top-space">
     		<a class="" href="<%- build_url() %>/#"><img class="social-media-icon" src="<%- build_url() %>/static/img/googleplus.png" alt="googleplus" /></a>
-    		<a class="" href="<%- build_url() %>/#"><img class="social-media-icon" src="<%- build_url() %>/static/img/facebook.png" alt="facebook" /></a>
-    		<a class="" href="<%- build_url() %>/#"><img class="social-media-icon" src="<%- build_url() %>/static/img/twitter.png" alt="twitter" /></a>
+    		<a class="" href="https://www.facebook.com/sharer/sharer.php?u=<%- build_url() %>/post/<%- v['postID'] %>"><img class="social-media-icon" src="<%- build_url() %>/static/img/facebook.png" alt="facebook" /></a>
+    		<a class="" href="https://twitter.com/home?status=I%20read%20a%20post%20by%20%40jamieroling%20at%20<%- build_url() %>/post/<%- v['postID'] %>"><img class="social-media-icon" src="<%- build_url() %>/static/img/twitter.png" alt="twitter" /></a>
     	</div>
 
     	<div class="col-50 top-space">
