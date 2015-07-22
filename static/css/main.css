@@ -93,6 +93,9 @@ article {
 article h3 {
   font-size: 40px;
 }
+article h4 {
+  font-size: 30px;
+}
 article p {
   font-size: 19px;
   line-height: 1.8;
