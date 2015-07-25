@@ -6,14 +6,14 @@ config("development", {
 })
 
 config("development", {
-  secret = "rainbownigger"
+  secret = "secret"
 })
 
 config("development", {
   mysql = {
     host = "127.0.0.1",
     user = "root",
-    password = "poopdick",
+    password = "password",
     database = "izanaDB"
   }
 })
